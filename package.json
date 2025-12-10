@@ -1,0 +1,21 @@
+{
+  "name": "MathBoard",
+  "displayName": "MathBoard",
+  "description": "Simple drawing whiteboard inside VS Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onCommand:mathboard.open"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "mathboard.open",
+        "title": "Open MathBoard"
+      }
+    ]
+  },
+  "main": "./extension.js"
+}
