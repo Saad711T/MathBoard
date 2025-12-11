@@ -1,22 +1,30 @@
 const vscode = require("vscode");
 const path = require("path");
+const fs = require("fs");
 
 function activate(context) {
-    let disposable = vscode.commands.registerCommand("mathboard.open", () => {
-        const panel = vscode.window.createWebviewPanel(
-            "MathBoard",
-            "Math Board",
-            vscode.ViewColumn.One,
-            { enableScripts: true }
-        );
-
-        const htmlPath = path.join(context.extensionPath, "media", "board.html");
-        const html = require("fs").readFileSync(htmlPath, "utf8");
-
-        panel.webview.html = html;
+    let openCmd = vscode.commands.registerCommand("mathboard.open", () => {
+        openWhiteboard(context);
     });
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(openCmd);
+}
+
+function openWhiteboard(context) {
+    const panel = vscode.window.createWebviewPanel(
+        "mathboard",
+        "MathBoard",
+        vscode.ViewColumn.One,
+        {
+            enableScripts: true,
+            retainContextWhenHidden: true
+        }
+    );
+
+    const htmlPath = path.join(context.extensionPath, "media", "board.html");
+    let html = fs.readFileSync(htmlPath, "utf8");
+
+    panel.webview.html = html;
 }
 
 exports.activate = activate;

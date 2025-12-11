@@ -1,6 +1,8 @@
 # MathBoard
 Simple whiteboard for math projects in VSCode
 
+<img src="t.png" alt="MathBoard Logo" width="200"/>
+
 ## Features
 
 - Like Miro or Microsoft whiteboard , You can use pencil - marker and fill tool.
